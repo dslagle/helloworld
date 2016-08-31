@@ -15,5 +15,18 @@
   "bugs": {
     "url": "https://github.com/dslagle/helloworld/issues"
   },
-  "homepage": "https://github.com/dslagle/helloworld#readme"
+  "homepage": "https://github.com/dslagle/helloworld#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2"
+  },
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-debug": "^2.1.2",
+    "gulp-jshint": "^2.0.1",
+    "jshint": "^2.9.3"
+  },
+  "jshintConfig": {
+    "curly": true
+  }
 }
