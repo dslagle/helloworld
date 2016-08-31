@@ -27,15 +27,9 @@
 // });
 
 function doMath(x, y) {
-    switch (x) {
-        case 5:
-            console.log("I'm 5!");
-        case 6:
-            console.log("I'm 6!");
-    }
-    
-    if (x < y)
+    if (x < y) {
         return x + y;
+    }
     else if (x == y) {
         return x * y;
     }
