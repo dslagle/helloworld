@@ -13,3 +13,7 @@ gulp.task("lint", function() {
         .pipe(lint.reporter('default'))
         .pipe(lint.reporter('fail'));
 });
+
+gulp.task("test", function() {
+    
+});
