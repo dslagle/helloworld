@@ -34,6 +34,8 @@ function doMath(x, y) {
         return x * y;
     }
     else {
-        return x - y;
+        return x + y;
     }
 }
+
+module.exports = doMath;
