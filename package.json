@@ -1,0 +1,19 @@
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "description": "prototype test project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"no tests yet!\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dslagle/helloworld.git"
+  },
+  "author": "dslagle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dslagle/helloworld/issues"
+  },
+  "homepage": "https://github.com/dslagle/helloworld#readme"
+}
