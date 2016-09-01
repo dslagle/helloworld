@@ -26,10 +26,10 @@
 //     console.log(`Listening on http:\\\\${address}:${port}`);
 // });
 
+//cool function
 function doMath(x, y) {
-    if (x < y) {
-        return x + y;
-    }
+    if (x < y)
+        return x + y
     else if (x == y) {
         return x * y;
     }
