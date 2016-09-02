@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"no tests yet!\"",
-    "lint": "gulp lint-report && gulp lint-check"
+    "lint": "gulp lint-report && gulp lint-check",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -18,18 +19,16 @@
   },
   "homepage": "https://github.com/dslagle/helloworld#readme",
   "dependencies": {
-    "body-parser": "^1.15.2"
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "del": "^2.2.2",
+    "eslint": "^3.4.0",
+    "eslint-config-google": "^0.6.0",
+    "eslint-html-reporter": "^0.5.2",
     "gulp": "^3.9.1",
-    "gulp-debug": "^2.1.2",
-    "gulp-jshint": "^2.0.1",
-    "gulp-jshint-html-reporter": "^0.1.3",
-    "jshint": "^2.9.3",
-    "jshint-html-reporter": "^0.2.4",
-    "jshint-stylish": "^2.2.1"
+    "gulp-eslint": "^3.0.1"
   },
   "jshintConfig": {
     "curly": true

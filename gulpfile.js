@@ -1,29 +1,22 @@
 var gulp = require("gulp");
-var style = require("gulp-jshint-html-reporter")
-var lint = require("gulp-jshint");
-var debug = require("gulp-debug");
+var reporter = require("eslint-html-reporter")
+var lint = require("gulp-eslint");
+var path = require("path");
+var fs = require("fs");
+var options = require("./.eslintrc.js");
 
 var lintConfig = require("./package.json").jshintConfig;
 
-gulp.task("lint-report", function(cb) {
+gulp.task("lint", function(cb) {
     gulp.src([
             "server.js",
         ])
-        .pipe(lint(lintConfig))
-        .pipe(lint.reporter(
-            'gulp-jshint-html-reporter',
-            {
-                filename: __dirname + "/test/lint.html",
-                createMissingFolders: false
-            }
-        ))
-        .pipe(cb());
-});
-
-gulp.task("lint-check", function() {
-    gulp.src([
-            "server.js",
-        ])
-        .pipe(lint(lintConfig))
-        .pipe(lint.reporter('fail'));
+        .pipe(lint(options))
+        .pipe(
+            lint.format(reporter, function(results) {
+                fs.writeFileSync(path.join(__dirname, 'test/lint-results.html'), results);
+            })
+        )
+        .pipe(lint.format())
+        .pipe(lint.failAfterError());
 });
