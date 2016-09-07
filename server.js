@@ -33,9 +33,9 @@ app.listen(port, address, function() {
 /**
  * Does cool math stuff. You would not understand.
  *
- * @param {any} x cool number
- * @param {any} y another cool number
- * @return {any} math stuff
+ * @param {number} x cool number
+ * @param {number} y another cool number
+ * @return {number} math stuff
  */
 function doMath(x, y) {
     if (x < y) {

@@ -1,4 +1,6 @@
-var expect = require("chai").expect;
+// And then...
+var chai = require('chai');
+var expect = chai.expect;
 var foo = require("../server");
 
 describe('doMath', function() {
