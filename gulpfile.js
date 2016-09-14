@@ -9,6 +9,7 @@ var mocha = require("gulp-mocha");
 gulp.task("lint", function() {
     gulp.src([
             "server.js",
+            "math.js"
         ])
         .pipe(lint(options))
         .pipe(
