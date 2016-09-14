@@ -24,15 +24,15 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "chai-webdriver": "^1.2.0",
     "eslint": "^3.4.0",
     "eslint-config-google": "^0.6.0",
     "eslint-html-reporter": "^0.5.2",
     "gulp": "^3.9.1",
     "gulp-eslint": "^3.0.1",
+    "gulp-mocha": "^3.0.1",
+    "mocha": "^3.0.2",
     "selenium-webdriver": "^2.53.3"
-  },
-  "jshintConfig": {
-    "curly": true
   }
 }

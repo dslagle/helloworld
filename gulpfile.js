@@ -4,10 +4,9 @@ var lint = require("gulp-eslint");
 var path = require("path");
 var fs = require("fs");
 var options = require("./.eslintrc.js");
+var mocha = require("gulp-mocha");
 
-var lintConfig = require("./package.json").jshintConfig;
-
-gulp.task("lint", function(cb) {
+gulp.task("lint", function() {
     gulp.src([
             "server.js",
         ])
@@ -19,4 +18,11 @@ gulp.task("lint", function(cb) {
         )
         .pipe(lint.format())
         .pipe(lint.failAfterError());
+});
+
+gulp.task("test", function() {
+    gulp.src(["test/post-test.js", "test/test.js"])
+        .pipe(mocha())
+        .once("error", () => process.exit(1))
+        .once("end", () => process.exit());
 });

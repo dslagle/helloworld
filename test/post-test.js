@@ -1,32 +1,55 @@
-// Start with a webdriver instance:
-var sw = require('selenium-webdriver');
-var driver = new sw.Builder()
-  .withCapabilities(sw.Capabilities.chrome())
-  .build()
+var chaiPost = require("chai");
+var chaiHttp = require("chai-http");
+var expect = chaiPost.expect;
 
-// And then...
-var chai = require('chai');
-var chaiWebdriver = require('chai-webdriver');
-chai.use(chaiWebdriver(driver));
+chaiPost.use(chaiHttp);
 
-var expect = chai.expect;
+describe("http test", function() {
+    var server = require("../server");
 
-describe('get-index', function() {
-    before(function(done) {
-      driver.get('http://localhost:22000').then(done);
+    it("post request to index should return 200 OK", function(done) {
+        chaiPost.request(server)
+            .post("/")
+            .end(function(err, res) {
+                expect(res).to.have.status(200);
+                done();
+            });
     });
     
-    it("index.html should contain Cool Stuff", function() {
-      return expect("#page-header").dom.to.contain.text("Cool Stuff");
+    it("get request to index should return 200 OK with HTML", function(done) {
+        chaiPost.request(server)
+            .get("/")
+            .end(function(err, res) {
+                expect(err).to.be.null;
+                expect(res).to.have.status(200);
+                expect(res).to.be.html;
+                done();
+            });
     });
 
-    it("index.html should contain Hello World Test", function() {
-      return expect("#page-sub-header").dom.to.contain.text("Hello World Test");
+    it("get /fib/x should return an array of numbers representing the fibinacci sequence with x elements", function(done) {
+        chaiPost.request(server)
+            .get("/fib/10")
+            .end(function(err, res) {
+                expect(err).to.be.null;
+                expect(res).to.have.status(200);
+                expect(res).to.be.json;
+                expect(res.body.result).to.have.length(10);
+                done();
+            });
     });
 
-    it("index.html title should be 'Hello World!!'", function() {
-      return driver.getTitle().then(function(title) {
-        return expect(title).to.equal("Hello Again World!!");
-      });
-    });
+    // it("index.html should contain Cool Stuff", function() {
+    //   return expect("#page-header").dom.to.contain.text("Cool Stuff");
+    // });
+
+    // it("index.html should contain Hello World Test", function() {
+    //   return expect("#page-sub-header").dom.to.contain.text("Hello World Test");
+    // });
+
+    // it("index.html title should be "Hello World!!"", function() {
+    //   return driver.getTitle().then(function(title) {
+    //     return expect(title).to.equal("Hello Again World!!");
+    //   });
+    // });
 });

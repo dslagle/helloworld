@@ -4,6 +4,7 @@ let express = require("express");
 let bp = require("body-parser");
 let path = require("path");
 let app = express();
+let math = require("./math");
 
 const address = "0.0.0.0";
 const port = 22000;
@@ -22,30 +23,20 @@ app.use(function(request, response, next) {
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function(request, response) {
-    console.log("Request!");
     response.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.listen(port, address, function() {
+app.get("/fib/:num", function(request, response) {
+    let num = request.params.num;
+    response.json({ result: math.fib(num) });
+});
+
+app.post("/", function(request, response) {
+    response.status(200).end();
+});
+
+var server = app.listen(port, address, function() {
     console.log(`Listening on http:\\\\${address}:${port}`);
 });
 
-/**
- * Does cool math stuff. You would not understand.
- *
- * @param {number} x cool number
- * @param {number} y another cool number
- * @return {number} math stuff
- */
-function doMath(x, y) {
-    if (x < y) {
-        return x + y;
-    }
-    else if (x === y) {
-        return x * y;
-    }
-
-    return x - y;
-}
-
-module.exports = doMath;
+module.exports = server;
