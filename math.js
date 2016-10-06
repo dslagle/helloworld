@@ -19,7 +19,7 @@ function doMath(x, y) {
 /**
  * Produces an array of fibinacci numbers with x elements
  *
- * @param {number} x the number of values to return from the fibinacci sequence, must be > 0
+ * @param {number} x the number of values to return from the fibinacci sequence, must be >= 0
  * @return {array} a sequence of x numbers of the fibinacci sequence
  */
 function fib(x) {

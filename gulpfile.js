@@ -21,8 +21,12 @@ gulp.task("lint", function() {
         .pipe(lint.failAfterError());
 });
 
+gulp.task("cover", function() {
+    
+});
+
 gulp.task("test", function() {
-    gulp.src(["test/post-test.js", "test/test.js"])
+    gulp.src(["test/**/*.js"])
         .pipe(mocha())
         .once("error", () => process.exit(1))
         .once("end", () => process.exit());

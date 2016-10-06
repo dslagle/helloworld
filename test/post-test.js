@@ -37,6 +37,16 @@ describe("http test", function() {
                 expect(res.body.result).to.have.length(10);
                 done();
             });
+
+        chaiPost.request(server)
+            .get("/fib/0")
+            .end(function(err, res) {
+                expect(err).to.be.null;
+                expect(res).to.have.status(200);
+                expect(res).to.be.json;
+                expect(res.body.result).to.have.length(0);
+                done();
+            });
     });
 
     // it("index.html should contain Cool Stuff", function() {

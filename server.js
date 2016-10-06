@@ -21,6 +21,7 @@ app.use(function(request, response, next) {
 });
 
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "node_modules")));
 
 app.get("/", function(request, response) {
     response.sendFile(path.join(__dirname, "index.html"));
